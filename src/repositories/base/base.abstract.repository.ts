@@ -1,3 +1,4 @@
+//Module yang digunakan untuk berhubungan langsung dengan database, untuk mengecek apahak service yang dibuat sudah terhubung ke database apa belum
 import { BaseInterfaceRepository } from './base.interface.repository';
 import { DeleteResult, Repository } from 'typeorm';
 
@@ -17,10 +18,12 @@ export abstract class BaseAbstractRepository<T> implements BaseInterfaceReposito
     return await this.entity.findOne(id);
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public async findByCondition(filterCondition: any): Promise<T> {
     return await this.entity.findOne({where: filterCondition});
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public async  findWithRelations(relations: any): Promise<T[]> {
     return await this.entity.find(relations)
   }

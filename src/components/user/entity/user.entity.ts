@@ -19,13 +19,20 @@ export class User {
 
   @Column({
     type: 'date',
+    default: Date.now()
   })
-  createdAt: any;
+  createdAt: Date;
 
   @Column({
     type: 'date',
+    default: Date.now()
   })
-  updatedAt: any;
+  updatedAt: string;
+
+  @Column({
+    type: 'string',
+  })
+  userId: string;
 
   @BeforeInsert()
   async hashPassword() {
